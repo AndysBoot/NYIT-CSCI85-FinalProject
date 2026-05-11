@@ -10,20 +10,6 @@ import java.util.Objects;
 public class CookieClickerPanel extends JPanel implements ActionListener {
     private int moneyCount = 1;
 
-    public static void main(String[] args){
-        JFrame frame = new JFrame("Cookie Clicker Panel");
-        frame.setLayout(new BorderLayout());
-
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        JPanel cookieClickerPanel = new CookieClickerPanel();
-        frame.add(cookieClickerPanel);
-
-        frame.setVisible(true);
-
-
-    }
 
     public CookieClickerPanel(){
         this.setLayout(new GridBagLayout());
