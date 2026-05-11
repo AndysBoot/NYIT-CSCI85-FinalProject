@@ -7,5 +7,8 @@ public class Player extends JFrame {
     protected int money;
     protected JButton moneyButton;
 
+    public static void main(String[] args) {
+
+    }
 
 }
