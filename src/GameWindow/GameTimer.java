@@ -1,18 +1,21 @@
 package GameWindow;
 import java.time.Duration;
 import java.time.Instant;
+
 public class GameTimer {
     //instance fields for the current time
     public Instant gameStartTime;
     public Instant gameCurrentTime;
+
     public GameTimer() {
-        Instant gameStartTime = Instant.now();
+        this.gameStartTime = Instant.now();
+        /*
         int i = 0;
         Instant end = null;
         try {
         while (i < 3) {
             Instant start = Instant.now();
-            Thread.sleep(15000);
+            Thread.sleep(1000);
             end = Instant.now();
             System.out.println("Amount of seconds passed" + Duration.between(start, end).toSeconds());
             i++;
@@ -26,16 +29,19 @@ public class GameTimer {
         e.printStackTrace();
     }
 
-    long secondsElapsed = Duration.between(gameStartTime, end).toSeconds();
-        System.out.println("secondsElapsed = "+secondsElapsed);
+         */
+
     }
 
 
-    public Instant getStartTime(){
-        return this.gameStartTime;
+    public long getStartTime(){
+        return this.gameStartTime.toEpochMilli();
     }
 
-    public Instant getCurrentTime(){
-        return this.gameCurrentTime;
+    public long getCurrentTime(){
+        Instant currTime = Instant.now();
+        long secondsElapsed = Duration.between(gameStartTime, currTime).toSeconds();
+        System.out.println("secondsElapsed = "+ secondsElapsed);
+        return secondsElapsed;
     }
 }
