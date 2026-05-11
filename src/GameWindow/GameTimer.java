@@ -1,42 +1,29 @@
 package GameWindow;
 import java.time.Duration;
 import java.time.Instant;
+
 public class GameTimer {
     //instance fields for the current time
     public Instant gameStartTime;
-    public Instant gameCurrentTime;
+
+    //Starts recording the time
     public GameTimer() {
-        Instant gameStartTime = Instant.now();
-        int i = 0;
-        Instant end = null;
-        try {
-        while (i < 3) {
-            Instant start = Instant.now();
-            Thread.sleep(15000);
-            end = Instant.now();
-            System.out.println("Amount of seconds passed" + Duration.between(start, end).toSeconds());
-            i++;
-        }
-    }
-        catch(InterruptedException e){
-        e.printStackTrace();
-    }
-        catch(Exception e){
-        //this is here in case there's an error we don't know about
-        e.printStackTrace();
+        this.gameStartTime = Instant.now();
+
     }
 
-    long secondsElapsed = Duration.between(gameStartTime, end).toSeconds();
-        System.out.println("secondsElapsed = "+secondsElapsed);
+    // i tried doing something with EpochMilli but didn't work, might save and use again later
+    public long getStartTime(){
+        return this.gameStartTime.toEpochMilli();
     }
 
 
-    public Instant getStartTime(){
-        return this.gameStartTime;
-    }
-
-    public Instant getCurrentTime(){
-        return this.gameCurrentTime;
+    //displays how long the program has been running for
+    public long getCurrentTime(){
+        Instant currTime = Instant.now();
+        long secondsElapsed = Duration.between(gameStartTime, currTime).toSeconds();
+        System.out.println("secondsElapsed = "+ secondsElapsed);
+        return secondsElapsed;
     }
 
 
