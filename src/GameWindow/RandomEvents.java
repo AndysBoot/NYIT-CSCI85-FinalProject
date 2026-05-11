@@ -1,4 +1,4 @@
-package RandomEventWindow;
+package GameWindow;
 
 public class RandomEvents {
 }
