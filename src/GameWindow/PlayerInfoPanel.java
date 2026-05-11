@@ -10,6 +10,9 @@ public class PlayerInfoPanel extends JPanel{
     private JLabel moneyLabel;
     private GameTimer gameTimer;
 
+    //Very important so ageLabel doesn't break
+    private long lastAgedSecond = -1;
+
     //used moneyValue to get the instance field of moneyCount from CookieClickerPanel
     private CookieClickerPanel moneyValue;
 
@@ -49,7 +52,7 @@ public class PlayerInfoPanel extends JPanel{
         this.add(moneyLabel);
 
         //this calls the updateInfo function that keeps track of the time, age, and money
-        Timer gameTime = new Timer(100, e -> updateInfo());
+        Timer gameTime = new Timer(10, e -> updateInfo());
         gameTime.start();
 
 
@@ -68,13 +71,18 @@ public class PlayerInfoPanel extends JPanel{
         timeLabel.setText(timeString);
 
         //after a certain number of seconds, increase the age by 1
-        if (totalSeconds % 5 == 0){
+        //there also was a problem with the age imcreasing by too much since technically, there is a 10 miliseocnd delay,
+        //the total amount of seconds is a mod of 5 for 100 intervals.
+        // I fixed this by using lastAgedSecond to make sure that .age isn't incremented if its already been incremented.
+        // I also added totalSeconds > 0 as it keps on adding 1 every time it started, so it would display 19 at first.
+        if (totalSeconds > 0 && (totalSeconds % 5 == 0) && totalSeconds != lastAgedSecond){
             ageReference.age += 1;
             ageLabel.setText("Age: " + (this.ageReference.age));
+
+            lastAgedSecond = totalSeconds;
         }
 
-        //functionality for retrieving the value of money
-
+        //functionality for displaying the value of money
         moneyLabel.setText("Money: $" + this.moneyValue.getMoneyCount());
 
 
