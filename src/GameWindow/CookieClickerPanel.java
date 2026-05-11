@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class CookieClickerPanel extends JPanel implements ActionListener {
-    //Static variables because it applies to the whole class not just one instance of cookieClickerpANEL
+    //Static variables because it applies to the whole class not just one instance of cookieClickerPANEL
     private static int moneyCount = 0;
 
     //Default Constructor

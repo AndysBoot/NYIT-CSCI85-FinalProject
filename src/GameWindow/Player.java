@@ -11,24 +11,26 @@ public class Player extends JFrame{
 
     public static void main(String[] args) throws InterruptedException {
         Player player = new Player();
-        JFrame frame = new JFrame("Game of Life Frame");
-        frame.setLayout(new BorderLayout());
+        player.setTitle("Game of Life");
+        player.setLayout(new BorderLayout());
+        player.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        player.setSize(500, 500);
+        player.setLocationRelativeTo(null);
+
+
         GameTimer gameTimer = new GameTimer();
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        JPanel cookieClickerPanel = new CookieClickerPanel();
-        frame.add(cookieClickerPanel);
+        CookieClickerPanel cookieClickerPanel = new CookieClickerPanel();
+        player.add(cookieClickerPanel, BorderLayout.CENTER);
 
-        PlayerInfoPanel infoPanel = new PlayerInfoPanel(gameTimer, player);
-        frame.add(infoPanel, BorderLayout.NORTH);
+        PlayerInfoPanel infoPanel = new PlayerInfoPanel(gameTimer, player, cookieClickerPanel);
+        player.add(infoPanel, BorderLayout.NORTH);
 
 
 
 
 
-        frame.setVisible(true);
+        player.setVisible(true);
 
 
         //this is just for testing
