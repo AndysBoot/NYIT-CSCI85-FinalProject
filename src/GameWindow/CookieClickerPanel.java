@@ -48,9 +48,9 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
     //Method that listens for a mouse click and increments the total money count by 1
     @Override
     public void actionPerformed(ActionEvent e) {
-        // System.out.println("Clicked");
+        //System.out.println("Clicked");
         moneyCount = moneyCount + 1;
-       // System.out.println(getMoneyCount());
+        System.out.println(getMoneyCount());
 
     }
 }
