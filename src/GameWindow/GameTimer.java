@@ -1,11 +1,11 @@
 package GameWindow;
-
+import java.time.Duration;
+import java.time.Instant;
 public class GameTimer {
-    protected Instant gameStartTime;
-    protected Instant gameCurrentTime;
+    //instance fields for the current time
+    public Instant gameStartTime;
+    public Instant gameCurrentTime;
     public GameTimer() {
-
-
         Instant gameStartTime = Instant.now();
         int i = 0;
         Instant end = null;
@@ -29,6 +29,7 @@ public class GameTimer {
     long secondsElapsed = Duration.between(gameStartTime, end).toSeconds();
         System.out.println("secondsElapsed = "+secondsElapsed);
     }
+
 
     public Instant getStartTime(){
         return this.gameStartTime;
