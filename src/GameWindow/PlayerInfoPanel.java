@@ -75,7 +75,7 @@ public class PlayerInfoPanel extends JPanel{
         //the total amount of seconds is a mod of 5 for 100 intervals.
         // I fixed this by using lastAgedSecond to make sure that .age isn't incremented if its already been incremented.
         // I also added totalSeconds > 0 as it keps on adding 1 every time it started, so it would display 19 at first.
-        if (totalSeconds > 0 && (totalSeconds % 5 == 0) && totalSeconds != lastAgedSecond){
+        if (totalSeconds > 0 && (totalSeconds % 15 == 0) && totalSeconds != lastAgedSecond){
             ageReference.age += 1;
             ageLabel.setText("Age: " + (this.ageReference.age));
 
