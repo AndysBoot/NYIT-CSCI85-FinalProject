@@ -4,10 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Player extends JFrame{
-    public int age = 18;
-    protected int money;
-    protected JButton moneyButton;
-
 
     public static void main(String[] args) throws InterruptedException {
         Player player = new Player();

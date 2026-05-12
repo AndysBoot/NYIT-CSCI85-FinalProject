@@ -1,15 +1,14 @@
 package GameWindow;
-import InvestmentsWindow.IRA;
+import InvestmentsWindow.investmentAccount;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Objects;
 
-public class Upgrades extends JPanel implements ActionListener {
+
+public class Upgrades extends JPanel {
+    public int age = 18;
+
     private JButton btn1;
     private JButton btn2;
     private JButton btn3;
@@ -19,24 +18,18 @@ public class Upgrades extends JPanel implements ActionListener {
     private int seconds = 0;
     private int minute = 0;
     private static JLabel moneyLabel;
+    private JLabel ageLabel;
 
 
     public Upgrades(){
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setBackground(new Color(210, 180, 140));
+
         moneyLabel = createLabel("Money: " + CookieClickerPanel.getMoneyCount());
         btn1 = createButton("Gold rush ", "IMAGES/GoldRush.png");
         btn2 = createButton("Cursed", "IMAGES/cursed.png" );
         btn3 = createButton("Entrapment", "IMAGES/entrapment.png" );
         btn4 = createButton("Heavenly Object ", "IMAGES/HeavenlyObj.png" );
         btn5 = createButton("Pot of Greed", "IMAGES/GreedPot.png" );
-
-        btn1.addActionListener(this);
-        btn2.addActionListener(this);
-        btn3.addActionListener(this);
-        btn4.addActionListener(this);
-        btn5.addActionListener(this);
 
         this.add(btn1);
         this.add(Box.createVerticalStrut(15));
@@ -52,6 +45,8 @@ public class Upgrades extends JPanel implements ActionListener {
         this.add(timerLabel);
         this.add(Box.createVerticalStrut(100));
         this.add(moneyLabel);
+        ageLabel = createLabel("Age: " + this.age);
+        this.add(ageLabel);
 
 
     }
@@ -66,11 +61,9 @@ public class Upgrades extends JPanel implements ActionListener {
 
         JButton btn = new JButton(text, new ImageIcon(scaled));
         btn.setFocusPainted(false);
-        btn.setFont(new Font("Merriweather", Font.BOLD, 16 ));
-        btn.setForeground(Color.BLACK);
-        btn.setBackground(Color.BLACK);   // background color
-        btn.setOpaque(true);
-        btn.setPreferredSize(new Dimension(200, 75));
+        btn.setFont(new Font("Times New Roman", Font.BOLD, 16 ));
+        btn.setBackground(Color.black);
+        btn.setPreferredSize(new Dimension(150, 75));
 
         return btn;
         }
@@ -109,46 +102,18 @@ public class Upgrades extends JPanel implements ActionListener {
             minute = seconds / 60;
             //String.format("%02d:%02d", minutes, seconds);
             timerLabel.setText(String.format("Time: %02d:%02d", minute, seconds % 60));
+
+            //increments the age every 12 seconds
+            if(this.seconds % 12 == 0){
+                this.age++;
+                System.out.println(this.age);
+                ageLabel.setText("Age: " + this.age);
+                investmentAccount.yearlyCall();
+            }
         });
 
         timer.start();
     }
 
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == btn1 && CookieClickerPanel.getMoneyCount() >= 15) {
-            System.out.println("Purchased");
-            CookieClickerPanel.addMoney(-15);
-            int i = (int)(Math.random() * (50 - 1) + 1);
-            CookieClickerPanel.addMoney(i);
-
-        }
-
-        else if (e.getSource() == btn2 && CookieClickerPanel.getMoneyCount() >= 50) {
-            System.out.println("Cursed clicked");
-            CookieClickerPanel.addMoney(-50);
-            CookieClickerPanel.i++;
-
-
-        }
-
-        else if (e.getSource() == btn3 && CookieClickerPanel.getMoneyCount() >= 100) {
-            System.out.println("Entrapment clicked");
-            CookieClickerPanel.addMoney(-100);
-        }
-
-        else if (e.getSource() == btn4 && CookieClickerPanel.getMoneyCount() >= 200){
-            System.out.println("Heavenly Object clciked");
-            CookieClickerPanel.addMoney(-200);
-
-        }
-
-        else if (e.getSource() == btn5 && CookieClickerPanel.getMoneyCount() >= 500){
-            System.out.println("Pot of greed was clicked");
-            CookieClickerPanel.addMoney(-500);
-
-        }
     }
-}
