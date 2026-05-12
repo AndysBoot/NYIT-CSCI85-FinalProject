@@ -19,11 +19,11 @@ public class Upgrades extends JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         moneyLabel = createLabel("Money: " + CookieClickerPanel.getMoneyCount());
-        btn1 = createButton("Gold rush ", "GoldRush.png");
-        btn2 = createButton("Cursed", "cursed.png" );
-        btn3 = createButton("Entrapment", "entrapment.png" );
-        btn4 = createButton("Heavenly Object ", "HeavenlyObj.png" );
-        btn5 = createButton("Pot of Greed", "GreedPot.png" );
+        btn1 = createButton("Gold rush ", "IMAGES/GoldRush.png");
+        btn2 = createButton("Cursed", "IMAGES/cursed.png" );
+        btn3 = createButton("Entrapment", "IMAGES/entrapment.png" );
+        btn4 = createButton("Heavenly Object ", "IMAGES/HeavenlyObj.png" );
+        btn5 = createButton("Pot of Greed", "IMAGES/GreedPot.png" );
 
         this.add(btn1);
         this.add(Box.createVerticalStrut(15));
@@ -39,9 +39,6 @@ public class Upgrades extends JPanel {
         this.add(timerLabel);
         this.add(Box.createVerticalStrut(100));
         this.add(moneyLabel);
-
-
-
 
 
     }

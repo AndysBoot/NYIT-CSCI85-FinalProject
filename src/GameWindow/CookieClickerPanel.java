@@ -18,7 +18,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
         //A layout that centers the button by default
 
         //Adding an image and setting its size to be 200 x 200
-        ImageIcon coinImg = new ImageIcon(Objects.requireNonNull(getClass().getResource("coin.png")));
+        ImageIcon coinImg = new ImageIcon(Objects.requireNonNull(getClass().getResource("IMAGES/coin.png")));
         Image scaled = coinImg.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 
         //Creates a button with a image that has no border displayed due to the methods
