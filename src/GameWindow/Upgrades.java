@@ -1,13 +1,17 @@
 package GameWindow;
+import InvestmentsWindow.IRA;
 import InvestmentsWindow.investmentAccount;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 
+
 public class Upgrades extends JPanel {
-    public int age = 18;
+    public static int age = 18;
 
     private JButton btn1;
     private JButton btn2;
@@ -19,6 +23,10 @@ public class Upgrades extends JPanel {
     private int minute = 0;
     private static JLabel moneyLabel;
     private JLabel ageLabel;
+    private JLabel investmentLabel;
+    private IRA retirement = new IRA(0);
+    private JButton contributeBtn;
+    private JTextField amtTxt;
 
 
     public Upgrades(){
@@ -47,6 +55,29 @@ public class Upgrades extends JPanel {
         this.add(moneyLabel);
         ageLabel = createLabel("Age: " + this.age);
         this.add(ageLabel);
+        investmentLabel = createLabel("Retirement: " + retirement.getBalance());
+        this.add(investmentLabel);
+
+        // Add investment stuff
+        amtTxt = new JTextField();
+        contributeBtn = new JButton("Contribute");
+        contributeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(CookieClickerPanel.getMoneyCount() < Integer.parseInt(amtTxt.getText())
+                        ||
+                        (Integer.parseInt(amtTxt.getText()) < 0 && Math.abs( Integer.parseInt(amtTxt.getText())) > retirement.getBalance() ) )
+                    throw new overdraftException("Not enough funds");
+                else {
+                    CookieClickerPanel.addMoney((int) (-1.0 * Double.parseDouble(amtTxt.getText())));
+                    retirement.contribute(Double.parseDouble(amtTxt.getText()));
+                }
+                investmentLabel.setText("Retirement: " + retirement.getBalance());
+            }
+        });
+        this.add(amtTxt);
+        this.add(contributeBtn);
+        this.add(Box.createVerticalStrut(15));
 
 
     }
@@ -102,13 +133,15 @@ public class Upgrades extends JPanel {
             minute = seconds / 60;
             //String.format("%02d:%02d", minutes, seconds);
             timerLabel.setText(String.format("Time: %02d:%02d", minute, seconds % 60));
-
-            //increments the age every 12 seconds
-            if(this.seconds % 12 == 0){
+            // periodic stuff
+            refreshMoney();
+            //increments the age every 3 seconds
+            if(this.seconds % 3 == 0){
                 this.age++;
                 System.out.println(this.age);
                 ageLabel.setText("Age: " + this.age);
                 investmentAccount.yearlyCall();
+                investmentLabel.setText("Retirement: " + retirement.getBalance());
             }
         });
 

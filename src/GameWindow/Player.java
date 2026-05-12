@@ -7,7 +7,7 @@ public class Player extends JFrame{
 
     public static void main(String[] args) throws InterruptedException {
         Player player = new Player();
-        player.setTitle("Game of Life");
+        player.setTitle("Game of xLife");
         player.setLayout(new BorderLayout());
         player.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         player.setSize(500, 500);
