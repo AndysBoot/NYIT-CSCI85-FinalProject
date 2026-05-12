@@ -8,7 +8,6 @@ public class Player extends JFrame{
     protected int money;
     protected JButton moneyButton;
 
-
     public static void main(String[] args) throws InterruptedException {
         Player player = new Player();
         player.setTitle("Game of Life");
@@ -25,10 +24,6 @@ public class Player extends JFrame{
 
         PlayerInfoPanel infoPanel = new PlayerInfoPanel(gameTimer, player, cookieClickerPanel);
         player.add(infoPanel, BorderLayout.NORTH);
-
-
-
-
 
         player.setVisible(true);
 
