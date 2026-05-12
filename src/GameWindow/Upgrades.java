@@ -1,4 +1,6 @@
 package GameWindow;
+import InvestmentsWindow.IRA;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
