@@ -6,11 +6,14 @@ Luis Martinez
 package InvestmentsWindow;
 
 // investments can later be refactored to any other type of investment account
-public class Investments extends investmentAccount {
-    public Investments(double balance) {
+public class IRA extends investmentAccount {
+    public IRA(double balance) {
         this.balance = balance;
         growthRate = 0.07;
+
+        list.add(this);
     }
+
     @Override
     public void withdrawlPenalty(double amount) {
         // basic stuff, expand on later

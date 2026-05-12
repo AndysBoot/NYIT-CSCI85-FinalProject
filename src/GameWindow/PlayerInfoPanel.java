@@ -1,5 +1,7 @@
 package GameWindow;
 
+import InvestmentsWindow.IRA;
+
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.Timer;
@@ -78,8 +80,9 @@ public class PlayerInfoPanel extends JPanel{
         if (totalSeconds > 0 && (totalSeconds % 5 == 0) && totalSeconds != lastAgedSecond){
             ageReference.age += 1;
             ageLabel.setText("Age: " + (this.ageReference.age));
-
             lastAgedSecond = totalSeconds;
+            // function that increases all retirement accounts by one
+            IRA.yearlyCall();
         }
 
         //functionality for displaying the value of money

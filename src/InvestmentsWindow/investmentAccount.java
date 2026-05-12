@@ -6,7 +6,10 @@ Luis Martinez
 
 package InvestmentsWindow;
 
+import java.util.ArrayList;
+
 abstract class investmentAccount {
+    static ArrayList<investmentAccount> list = new ArrayList<investmentAccount>(); // this list has every single investment account called
     double balance;
     double growthRate;
     abstract void withdrawlPenalty(double amount);
@@ -16,7 +19,14 @@ abstract class investmentAccount {
     }
 
     public void annualGrowth() {
-        balance += balance * growthRate;
+        this.balance += this.balance * this.growthRate;
+    }
+
+    public static void yearlyCall() {
+        for(investmentAccount inv : list) {
+            inv.annualGrowth();
+        }
+        System.gc(); // this method could be bad for memory
     }
 
     public double getGrowthRate() {

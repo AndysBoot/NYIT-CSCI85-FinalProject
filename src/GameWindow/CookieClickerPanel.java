@@ -1,4 +1,11 @@
+/* CSCI 185 M01
+Tayebi
+Luis Martinez
+5/12/2026
+ */
 package GameWindow;
+import InvestmentsWindow.IRA;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,6 +35,29 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
         cookieBtn.addActionListener(this);
         //Add cookie button to the JPanel
         this.add(cookieBtn);
+
+        // investment button
+        /*
+        later add logic for amount to invest
+         */
+        IRA retirement = new IRA(0);
+        JButton investBtn = new JButton("Invest");
+        JTextField retirementAmount = new JTextField();
+        investBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(Double.parseDouble(retirementAmount.getText()) > moneyCount) {
+                    throw new overdraftException("Contributing too much");
+                }
+                moneyCount -= (int) Double.parseDouble(retirementAmount.getText());
+                retirement.contribute(Double.parseDouble(retirementAmount.getText()));
+                System.out.println(retirement.getBalance());
+            }
+        });
+
+        this.add(investBtn);
+        this.add(retirementAmount);
+
 
     }
 
