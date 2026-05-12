@@ -11,38 +11,24 @@ public class Player extends JFrame{
 
     public static void main(String[] args) throws InterruptedException {
         Player player = new Player();
-        JFrame frame = new JFrame("Game of Life Frame");
-        frame.setLayout(new BorderLayout());
-        GameTimer gameTimer = new GameTimer();
+        player.setTitle("Game of Life");
+        player.setLayout(new BorderLayout());
+        player.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        player.setSize(500, 500);
+        player.setLocationRelativeTo(null);
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        JPanel cookieClickerPanel = new CookieClickerPanel();
-        frame.add(cookieClickerPanel);
+        CookieClickerPanel cookieClickerPanel = new CookieClickerPanel();
+        player.add(cookieClickerPanel, BorderLayout.CENTER);
 
-        PlayerInfoPanel infoPanel = new PlayerInfoPanel(gameTimer, player);
-        frame.add(infoPanel, BorderLayout.NORTH);
+        player.add(new CookieClickerPanel(), BorderLayout.CENTER);
 
-
+        player.add(new Upgrades(), BorderLayout.EAST);
 
 
 
-        frame.setVisible(true);
 
+        player.setVisible(true);
 
-        //this is just for testing
-        /*
-        System.out.println("Start time: " + testing123.getStartTime());
-        System.out.println("Current time: " + testing123.getCurrentTime());
-        System.out.println("fghjk");
-
-        Thread.sleep(3000);
-
-        System.out.println("Start time: " + testing123.getStartTime());
-        System.out.println("Current time: " + testing123.getCurrentTime());
-
-         */
     }
 
 }

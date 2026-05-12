@@ -5,14 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+
+
 public class CookieClickerPanel extends JPanel implements ActionListener {
+    private JButton cookieBtn;
+
     //Static variables because it applies to the whole class not just one instance of cookieClickerpANEL
     private static int moneyCount = 0;
 
     //Default Constructor
     public CookieClickerPanel(){
         //A layout that centers the button by default
-        this.setLayout(new GridBagLayout());
 
         //Adding an image and setting its size to be 200 x 200
         ImageIcon coinImg = new ImageIcon(Objects.requireNonNull(getClass().getResource("coin.png")));
@@ -32,7 +35,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
     }
 
     //Get method for moneyCount which can help display the total amount of money
-    public int getMoneyCount(){
+    public static int getMoneyCount(){
         return moneyCount;
     }
 
@@ -40,6 +43,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
     public void setMoneyCount(int moneyCount){
         CookieClickerPanel.moneyCount = moneyCount;
     }
+
     //Method for other classes to add a custom amount of money or take away
     public void addMoney(int amount) {
         CookieClickerPanel.moneyCount += amount;
@@ -53,4 +57,9 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
         System.out.println(getMoneyCount());
 
     }
+
+
+
+
+
 }
