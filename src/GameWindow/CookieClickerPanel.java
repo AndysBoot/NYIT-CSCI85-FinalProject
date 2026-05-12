@@ -54,6 +54,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //System.out.println("Clicked");
         moneyCount = moneyCount + 1;
+        Upgrades.refreshMoney();
         System.out.println(getMoneyCount());
 
     }

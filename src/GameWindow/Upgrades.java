@@ -12,13 +12,13 @@ public class Upgrades extends JPanel {
     private JLabel timerLabel;
     private int seconds = 0;
     private int minute = 0;
-    private JLabel moneyLabel;
+    private static JLabel moneyLabel;
+
+
     public Upgrades(){
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        moneyLabel = new JLabel("Money: " + CookieClickerPanel.getMoneyCount());
-        moneyLabel.setPreferredSize(new Dimension(150, 75));
-
+        moneyLabel = createLabel("Money: " + CookieClickerPanel.getMoneyCount());
         btn1 = createButton("Gold rush ", "GoldRush.png");
         btn2 = createButton("Cursed", "cursed.png" );
         btn3 = createButton("Entrapment", "entrapment.png" );
@@ -34,10 +34,13 @@ public class Upgrades extends JPanel {
         this.add(btn4);
         this.add(Box.createVerticalStrut(15));
         this.add(btn5);
+        this.add(Box.createVerticalStrut(15));
         createTimer();
         this.add(timerLabel);
-        this.add(Box.createVerticalStrut(15));
+        this.add(Box.createVerticalStrut(100));
         this.add(moneyLabel);
+
+
 
 
 
@@ -59,6 +62,23 @@ public class Upgrades extends JPanel {
 
         return btn;
         }
+
+
+        public JLabel createLabel(String text) {
+
+            JLabel label = new JLabel(text);
+            label.setFont(new Font("Times New Roman", Font.BOLD, 18));
+            label.setBackground(Color.black);
+
+            label.setPreferredSize(new Dimension(150, 75));
+
+            return label;
+
+        }
+
+    public static void refreshMoney(){
+        moneyLabel.setText("Money: " + CookieClickerPanel.getMoneyCount());
+    }
 
 
 
