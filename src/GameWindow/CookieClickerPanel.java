@@ -9,14 +9,14 @@ import java.util.Objects;
 
 public class CookieClickerPanel extends JPanel implements ActionListener {
     private JButton cookieBtn;
-
+    static int i = 1;
     //Static variables because it applies to the whole class not just one instance of cookieClickerpANEL
     private static int moneyCount = 0;
-
     //Default Constructor
     public CookieClickerPanel(){
         //A layout that centers the button by default
-
+        //this.setBackground(new Color(45, 90, 150));
+       this.setBackground(new Color( 45, 90, 150));
         //Adding an image and setting its size to be 200 x 200
         ImageIcon coinImg = new ImageIcon(Objects.requireNonNull(getClass().getResource("IMAGES/coin.png")));
         Image scaled = coinImg.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -32,6 +32,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
         //Add cookie button to the JPanel
         this.add(cookieBtn);
 
+
     }
 
     //Get method for moneyCount which can help display the total amount of money
@@ -45,19 +46,27 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
     }
 
     //Method for other classes to add a custom amount of money or take away
-    public void addMoney(int amount) {
+    public static void addMoney(int amount) {
         CookieClickerPanel.moneyCount += amount;
     }
+
 
     //Method that listens for a mouse click and increments the total money count by 1
     @Override
     public void actionPerformed(ActionEvent e) {
         //System.out.println("Clicked");
-        moneyCount = moneyCount + 1;
+
+        CookieClickerPanel.moneyCount = moneyCount + i;
         Upgrades.refreshMoney();
         System.out.println(getMoneyCount());
 
     }
+    // Source - https://stackoverflow.com/a/19125833
+// Posted by Maxim Shoustin, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-05-12, License - CC BY-SA 3.0
+
+
+
 
 
 
