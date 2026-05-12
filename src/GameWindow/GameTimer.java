@@ -23,7 +23,7 @@ public class GameTimer {
     public long getCurrentTime(){
         Instant currTime = Instant.now();
         long secondsElapsed = Duration.between(gameStartTime, currTime).toSeconds();
-        System.out.println("secondsElapsed = "+ secondsElapsed);
+        //System.out.println("secondsElapsed = "+ secondsElapsed);
         return secondsElapsed;
     }
 
