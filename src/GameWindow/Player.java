@@ -21,7 +21,6 @@ public class Player extends JFrame{
 
 
 
-
         player.setVisible(true);
 
     }

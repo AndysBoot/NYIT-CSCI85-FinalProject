@@ -70,13 +70,10 @@ public class Upgrades extends JPanel {
 
 
         public JLabel createLabel(String text) {
-
             JLabel label = new JLabel(text);
             label.setFont(new Font("Times New Roman", Font.BOLD, 18));
             label.setBackground(Color.black);
-
             label.setPreferredSize(new Dimension(150, 75));
-
             return label;
 
         }
@@ -84,7 +81,6 @@ public class Upgrades extends JPanel {
     public static void refreshMoney(){
         moneyLabel.setText("Money: " + CookieClickerPanel.getMoneyCount());
     }
-
 
 
     // Call this method to create and start the timer
@@ -109,7 +105,15 @@ public class Upgrades extends JPanel {
                 System.out.println(this.age);
                 ageLabel.setText("Age: " + this.age);
                 investmentAccount.yearlyCall();
+
+                //gives a "grace" period until the random events generate
+                if (age >= 21) {
+                    CookieClickerPanel.generateNewEvent();
+                }
+
             }
+
+
         });
 
         timer.start();
