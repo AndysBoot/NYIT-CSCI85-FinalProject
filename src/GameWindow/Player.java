@@ -10,7 +10,7 @@ public class Player extends JFrame{
         player.setTitle("Game of Life");
         player.setLayout(new BorderLayout());
         player.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        player.setSize(1500, 1500);
+        player.setSize(500, 500);
         player.setLocationRelativeTo(null);
 
         CookieClickerPanel cookieClickerPanel = new CookieClickerPanel();
