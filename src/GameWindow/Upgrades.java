@@ -7,8 +7,7 @@ import java.util.Objects;
 
 
 public class Upgrades extends JPanel {
-    public int age = 18;
-
+    public static int age = 18;
     private JButton btn1;
     private JButton btn2;
     private JButton btn3;
@@ -41,12 +40,6 @@ public class Upgrades extends JPanel {
         this.add(Box.createVerticalStrut(15));
         this.add(btn5);
         this.add(Box.createVerticalStrut(15));
-        createTimer();
-        this.add(timerLabel);
-        this.add(Box.createVerticalStrut(100));
-        this.add(moneyLabel);
-        ageLabel = createLabel("Age: " + this.age);
-        this.add(ageLabel);
 
 
     }
@@ -78,46 +71,8 @@ public class Upgrades extends JPanel {
 
         }
 
-    public static void refreshMoney(){
-        moneyLabel.setText("Money: " + CookieClickerPanel.getMoneyCount());
-    }
 
 
-    // Call this method to create and start the timer
-    public void createTimer() {
-
-        // Create JLabel
-        timerLabel = new JLabel("Time: 0");
-        timerLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-
-        //Timer updates every one sec
-        //From the java swing library
-        Timer timer = new Timer(1000, e -> {
-            seconds++;
-            //converting seconds to min : sec
-            minute = seconds / 60;
-            //String.format("%02d:%02d", minutes, seconds);
-            timerLabel.setText(String.format("Time: %02d:%02d", minute, seconds % 60));
-
-            //increments the age every 12 seconds
-            if(this.seconds % 12 == 0){
-                this.age++;
-                System.out.println(this.age);
-                ageLabel.setText("Age: " + this.age);
-                investmentAccount.yearlyCall();
-
-                //gives a "grace" period until the random events generate
-                if (age >= 21) {
-                    CookieClickerPanel.generateNewEvent();
-                }
-
-            }
-
-
-        });
-
-        timer.start();
-    }
 
 
     }
