@@ -9,17 +9,13 @@ package InvestmentsWindow;
 import java.util.ArrayList;
 
 public abstract class investmentAccount {
-    static ArrayList<investmentAccount> list = new ArrayList<>(); // this list has every single investment account called
+    static ArrayList<investmentAccount> list = new ArrayList<investmentAccount>(); // this list has every single investment account called
     double balance;
     double growthRate;
     abstract void withdrawlPenalty(double amount);
 
     public void contribute(double amount) {
-        if(amount > 0)
-            balance += amount;
-        else {
-            withdrawlPenalty(amount * -1.0);
-        }
+        balance += amount;
     }
 
     public void annualGrowth() {
