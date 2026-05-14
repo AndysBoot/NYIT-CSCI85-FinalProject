@@ -1,4 +1,5 @@
 package GameWindow;
+import InvestmentsWindow.IRA;
 import InvestmentsWindow.investmentAccount;
 
 import javax.swing.*;
@@ -20,15 +21,23 @@ public class Upgrades extends JPanel {
     private JLabel ageLabel;
 
 
-    public Upgrades(){
+
+
+    public Upgrades() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        moneyLabel = createLabel("Money: " + CookieClickerPanel.getMoneyCount());
+        moneyLabel = createLabel("Money: $" + CookieClickerPanel.getMoneyCount());
+
+        this.add(moneyLabel);
+
+        ageLabel = createLabel("Age: " + age);
+        this.add(ageLabel);
+
         btn1 = createButton("Gold rush ", "IMAGES/GoldRush.png");
-        btn2 = createButton("Cursed", "IMAGES/cursed.png" );
-        btn3 = createButton("Entrapment", "IMAGES/entrapment.png" );
-        btn4 = createButton("Heavenly Object ", "IMAGES/HeavenlyObj.png" );
-        btn5 = createButton("Pot of Greed", "IMAGES/GreedPot.png" );
+        btn2 = createButton("Cursed", "IMAGES/cursed.png");
+        btn3 = createButton("Entrapment", "IMAGES/entrapment.png");
+        btn4 = createButton("Heavenly Object ", "IMAGES/HeavenlyObj.png");
+        btn5 = createButton("Pot of Greed", "IMAGES/GreedPot.png");
 
         this.add(btn1);
         this.add(Box.createVerticalStrut(15));
@@ -42,10 +51,14 @@ public class Upgrades extends JPanel {
         this.add(Box.createVerticalStrut(15));
 
 
+
+        createTimer();
+
+
     }
 
     //Creating buttons using a method
-    public JButton createButton(String text, String filePath){
+    public JButton createButton(String text, String filePath) {
         //ImageICon
         ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource(filePath)));
 
@@ -54,25 +67,68 @@ public class Upgrades extends JPanel {
 
         JButton btn = new JButton(text, new ImageIcon(scaled));
         btn.setFocusPainted(false);
-        btn.setFont(new Font("Times New Roman", Font.BOLD, 16 ));
+        btn.setFont(new Font("Times New Roman", Font.BOLD, 16));
         btn.setBackground(Color.black);
         btn.setPreferredSize(new Dimension(150, 75));
 
         return btn;
-        }
+    }
 
 
-        public JLabel createLabel(String text) {
-            JLabel label = new JLabel(text);
-            label.setFont(new Font("Times New Roman", Font.BOLD, 18));
-            label.setBackground(Color.black);
-            label.setPreferredSize(new Dimension(150, 75));
-            return label;
+    public JLabel createLabel(String text) {
+        JLabel label = new JLabel(text);
+        label.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        label.setBackground(Color.black);
+        label.setPreferredSize(new Dimension(150, 75));
+        return label;
 
-        }
+    }
 
+    public static void refreshMoney() {
+        moneyLabel.setText("Money: " + CookieClickerPanel.getMoneyCount());
+    }
+
+
+    // Call this method to create and start the timer
+    public void createTimer() {
+
+        // Create JLabel
+        timerLabel = new JLabel("Time: 0");
+        timerLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+
+        this.add(timerLabel);
+
+        //Timer updates every one sec
+        //From the java swing library
+        Timer timer = new Timer(1000, e -> {
+            seconds++;
+            //converting seconds to min : sec
+            minute = seconds / 60;
+            //String.format("%02d:%02d", minutes, seconds);
+            timerLabel.setText(String.format("Time: %02d:%02d", minute, seconds % 60));
+
+            //increments the age every 12 seconds
+            if (this.seconds % 12 == 0) {
+                this.age++;
+                System.out.println(this.age);
+                ageLabel.setText("Age: " + this.age);
+                investmentAccount.yearlyCall();
+                refreshMoney();
+
+                //gives a "grace" period until the random events generate
+                if (age >= 21) {
+                    CookieClickerPanel.generateNewEvent();
+                }
+
+            }
+
+
+        });
+
+        timer.start();
 
 
 
 
     }
+}

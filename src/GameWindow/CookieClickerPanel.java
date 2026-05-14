@@ -15,12 +15,13 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
     static int clickValue = 1;
     //Static variables because it applies to the whole class not just one instance of cookieClickerpANEL
     private static int moneyCount = 0;
+
     //Default Constructor
-    public CookieClickerPanel(){
+    public CookieClickerPanel() {
         this.setLayout(new BorderLayout());
         //A layout that centers the button by default
         //this.setBackground(new Color(45, 90, 150));
-        this.setBackground(new Color( 45, 90, 150));
+        this.setBackground(new Color(45, 90, 150));
         //Adding an image and setting its size to be 200 x 200
         ImageIcon coinImg = new ImageIcon(Objects.requireNonNull(getClass().getResource("IMAGES/coin.png")));
         Image scaled = coinImg.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
@@ -40,7 +41,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
 
         //Adding randomEvents Panel to CookieClicke Panel
 
-        randomEventsArea= new JTextArea("This is where you will see your random events occuring");
+        randomEventsArea = new JTextArea("This is where you will see your random events occuring");
         //Formatting the text so it doesn't cut the words out(without this, the line doesn't wrap around)
         randomEventsArea.setLineWrap(true);
         randomEventsArea.setWrapStyleWord(true);
@@ -49,21 +50,33 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
         randomEventsArea.setFocusable(false);
         randomEventsArea.setOpaque(false);
         //styling appearance
-        randomEventsArea.setFont(new Font("Times New Roman", Font.BOLD, 18 ));
+        randomEventsArea.setFont(new Font("Times New Roman", Font.BOLD, 18));
         randomEventsArea.setForeground(Color.WHITE);
         //adding to the core CookieClickerPanel GUI
         this.add(randomEventsArea, BorderLayout.SOUTH);
 
+        Timer eventTimer = new Timer(10000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //System.out.println("Clicked");
+                CookieClickerPanel.moneyCount = moneyCount + clickValue;
+                System.out.println(getMoneyCount());
+                Upgrades.refreshMoney();
+
+            }
+        });
+
+        eventTimer.start();
 
     }
 
     //Get method for moneyCount which can help display the total amount of money
-    public static int getMoneyCount(){
+    public static int getMoneyCount() {
         return moneyCount;
     }
 
     //set method to use in other classes that allows you to add more than 1 dollar
-    public void setMoneyCount(int moneyCount){
+    public void setMoneyCount(int moneyCount) {
         CookieClickerPanel.moneyCount = moneyCount;
     }
 
@@ -77,9 +90,9 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //System.out.println("Clicked");
-
         CookieClickerPanel.moneyCount = moneyCount + clickValue;
         System.out.println(getMoneyCount());
+        Upgrades.refreshMoney();
 
     }
     // Source - https://stackoverflow.com/a/19125833
@@ -87,7 +100,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
 // Retrieved 2026-05-12, License - CC BY-SA 3.0
 
     //call this to generate the event, and update all values from the Player
-    public static void generateNewEvent(){
+    public static void generateNewEvent() {
         //generates the event and stores it as event
         RandomEvents event = eventSelector.selectEvent();
 
@@ -95,16 +108,15 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
         randomEventsArea.setText(event.getRandomEventMessage());
 
         //increments player balance from event
-        moneyCount = (int)((moneyCount + event.moneyChange) * event.multiplier);
+        moneyCount = (int) ((moneyCount + event.moneyChange) * event.multiplier);
 
         //increments cookie click value from event
         clickValue += event.clickChange;
 
+        Upgrades.refreshMoney();
+
 
     }
-
-
-
 
 
 

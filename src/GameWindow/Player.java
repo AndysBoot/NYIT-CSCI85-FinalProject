@@ -15,10 +15,8 @@ public class Player extends JFrame{
 
         CookieClickerPanel cookieClickerPanel = new CookieClickerPanel();
         player.add(cookieClickerPanel, BorderLayout.CENTER);
-       // player.add(new CookieClickerPanel(), BorderLayout.CENTER);
 
         player.add(new Upgrades(), BorderLayout.EAST);
-        player.add(new PlayerInfoPanel(new GameTimer(), player, cookieClickerPanel), BorderLayout.WEST);
 
 
 
