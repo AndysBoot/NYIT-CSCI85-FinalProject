@@ -17,7 +17,7 @@ public class IRA extends investmentAccount {
     }
 
     @Override
-    public void withdrawlPenalty(double amount) {
+    public void withdrawalPenalty(double amount) {
         // basic stuff, expand on later
         balance -= amount;
         if(Player.age < 60) {

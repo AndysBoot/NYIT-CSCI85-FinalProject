@@ -12,13 +12,13 @@ public abstract class investmentAccount {
     static ArrayList<investmentAccount> list = new ArrayList<>(); // this list has every single investment account called
     double balance;
     double growthRate;
-    abstract void withdrawlPenalty(double amount);
+    abstract void withdrawalPenalty(double amount);
 
     public void contribute(double amount) {
         if(amount > 0)
             balance += amount;
         else {
-            withdrawlPenalty(amount * -1.0);
+            withdrawalPenalty(amount * -1.0);
         }
     }
 
@@ -31,6 +31,14 @@ public abstract class investmentAccount {
             inv.annualGrowth();
         }
         System.gc(); // this method could be bad for memory
+    }
+
+    public static double totalInvestment() {
+        double ret = 0;
+        for(investmentAccount inv : list) {
+            ret += inv.getBalance();
+        }
+        return ret;
     }
 
     public double getGrowthRate() {
