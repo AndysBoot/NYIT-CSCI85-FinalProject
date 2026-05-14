@@ -5,6 +5,7 @@ Luis Martinez
 
 package InvestmentsWindow;
 
+import GameWindow.Player;
 import GameWindow.Upgrades;
 
 // investments can later be refactored to any other type of investment account
@@ -19,7 +20,7 @@ public class IRA extends investmentAccount {
     public void withdrawlPenalty(double amount) {
         // basic stuff, expand on later
         balance -= amount;
-        if(Upgrades.age < 60) {
+        if(Player.age < 60) {
             balance = balance * 0.9;
         }
     }

@@ -79,7 +79,6 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
         //System.out.println("Clicked");
 
         CookieClickerPanel.moneyCount = moneyCount + clickValue;
-        Upgrades.refreshMoney();
         System.out.println(getMoneyCount());
 
     }
@@ -101,8 +100,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
         //increments cookie click value from event
         clickValue += event.clickChange;
 
-        //refreshes balance for player(visualization)
-        Upgrades.refreshMoney();
+
     }
 
 

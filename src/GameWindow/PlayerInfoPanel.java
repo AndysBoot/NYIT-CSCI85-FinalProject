@@ -1,7 +1,12 @@
 package GameWindow;
 
+import InvestmentsWindow.IRA;
+import InvestmentsWindow.investmentAccount;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class PlayerInfoPanel extends JPanel{
@@ -55,6 +60,30 @@ public class PlayerInfoPanel extends JPanel{
         Timer gameTime = new Timer(10, e -> updateInfo());
         gameTime.start();
 
+        // investment stuff
+        IRA retirement = new IRA(0);
+        JButton investBtn = new JButton("Invest");
+        JTextField retirementAmount = new JTextField();
+        investBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(Double.parseDouble(retirementAmount.getText()) > moneyValue.getMoneyCount()) {
+                    throw new overdraftException("Contributing too much");
+                }
+                // optimize
+                int tmpMoney = moneyValue.getMoneyCount();
+                tmpMoney -= (int) Double.parseDouble(retirementAmount.getText());
+                moneyValue.setMoneyCount(tmpMoney);
+                // end opp
+                retirement.contribute(Double.parseDouble(retirementAmount.getText()));
+                System.out.println(retirement.getBalance());
+            }
+        });
+
+        // TODO add graph showing retirement ???
+
+        this.add(investBtn);
+        this.add(retirementAmount);
 
 
     }
@@ -78,8 +107,8 @@ public class PlayerInfoPanel extends JPanel{
         if (totalSeconds > 0 && (totalSeconds % 15 == 0) && totalSeconds != lastAgedSecond){
             ageReference.age += 1;
             ageLabel.setText("Age: " + (this.ageReference.age));
-
             lastAgedSecond = totalSeconds;
+            investmentAccount.yearlyCall();
         }
 
         //functionality for displaying the value of money
