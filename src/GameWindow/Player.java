@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Player extends JFrame{
-
+    public static int age = 18;
     public static void main(String[] args) throws InterruptedException {
         Player player = new Player();
         player.setTitle("Game of Life");
@@ -15,9 +15,10 @@ public class Player extends JFrame{
 
         CookieClickerPanel cookieClickerPanel = new CookieClickerPanel();
         player.add(cookieClickerPanel, BorderLayout.CENTER);
-        player.add(new CookieClickerPanel(), BorderLayout.CENTER);
+       // player.add(new CookieClickerPanel(), BorderLayout.CENTER);
 
         player.add(new Upgrades(), BorderLayout.EAST);
+        player.add(new PlayerInfoPanel(new GameTimer(), player, cookieClickerPanel), BorderLayout.WEST);
 
 
 
