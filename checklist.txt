@@ -1,7 +1,7 @@
 1. Demonstrates OOP
    a. Encapsulation
    b. [x] Inheritance
-   c. Polymorphism
+   c. [x] Polymorphism
 2. [x] UML
 3. Error Handling
 4. File I/O
