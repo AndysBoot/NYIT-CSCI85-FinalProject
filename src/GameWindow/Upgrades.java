@@ -4,10 +4,12 @@ import InvestmentsWindow.investmentAccount;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 
-public class Upgrades extends JPanel {
+public class Upgrades extends JPanel{
     public static int age = 18;
     private JButton btn1;
     private JButton btn2;
@@ -20,6 +22,9 @@ public class Upgrades extends JPanel {
     private static JLabel moneyLabel;
     private JLabel ageLabel;
 
+    // implementing Retirement panel with these instance fields
+    private IRA retirement;
+    private JTextField retirementAmount;
 
 
 
@@ -50,12 +55,50 @@ public class Upgrades extends JPanel {
         this.add(btn5);
         this.add(Box.createVerticalStrut(15));
 
+        retirement = new IRA(0);
+        JLabel enterInvestment = new JLabel("Invest in your IRA:");
+        enterInvestment.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        this.add(enterInvestment);
 
+        retirementAmount = new JTextField();
+        retirementAmount.setMaximumSize(new Dimension(150, 30));
+        this.add(retirementAmount);
 
+        //IRA retirement = new IRA(0);
+        JButton investBtn = new JButton("Invest");
+        investBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        investBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (Double.parseDouble(retirementAmount.getText()) > CookieClickerPanel.getMoneyCount()) {
+                        throw new overdraftException("Contributing too much");
+                    }
+                    if (Double.parseDouble(retirementAmount.getText()) < 0){
+                        //added so the user can't give themselves money
+                        throw new NegativeNumberException("Negative number");
+                    }
+                    // optimize
+                    int tmpMoney = CookieClickerPanel.getMoneyCount();
+                    tmpMoney -= (int) Double.parseDouble(retirementAmount.getText());
+                    CookieClickerPanel.setMoneyCount(tmpMoney);
+                    Upgrades.refreshMoney();
+                    // end opp
+                    retirement.contribute(Double.parseDouble(retirementAmount.getText()));
+                    System.out.println(retirement.getBalance());
+                } catch (NumberFormatException e2) {
+                    e2.printStackTrace();
+                    //to prevent the sys from crashing when anything but a number is entered
+                }
+
+            }
+        });
+
+        this.add(investBtn);
         createTimer();
-
-
     }
+
+
 
     //Creating buttons using a method
     public JButton createButton(String text, String filePath) {
@@ -130,5 +173,5 @@ public class Upgrades extends JPanel {
 
 
 
-    }
-}
+
+}}

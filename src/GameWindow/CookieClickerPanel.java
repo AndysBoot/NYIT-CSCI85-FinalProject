@@ -76,7 +76,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
     }
 
     //set method to use in other classes that allows you to add more than 1 dollar
-    public void setMoneyCount(int moneyCount) {
+    public static void setMoneyCount(int moneyCount) {
         CookieClickerPanel.moneyCount = moneyCount;
     }
 
