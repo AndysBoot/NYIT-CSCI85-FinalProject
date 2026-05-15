@@ -1,5 +1,5 @@
 /* CSCI 185 M01
-Tayebi Pranta, Andy Sosa
+Andy Sosa, Tayebi Pranta
 5/14/2026
 */
 package GameWindow;
@@ -15,7 +15,7 @@ import java.util.Objects;
 
 
 public class Upgrades extends JPanel{
-    public static int age = 79;
+    public static int age = 18;
     private JButton btn1;
     private JButton btn2;
     private JButton btn3;

@@ -1,5 +1,5 @@
 /* CSCI 185 M01
-Andy Sosa, (whoever did the base code please put your name here),
+Andy Sosa,
 5/14/2026
 */
 
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class ExitGame extends JFrame {
-    private final int exitAge = 18;
+    private final int exitAge = 80;
     private JLabel gameinfo;
     private JLabel winInfo;
     private double totalMoney;
