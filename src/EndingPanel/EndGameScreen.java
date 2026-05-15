@@ -4,6 +4,7 @@ import GameWindow.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -59,7 +60,7 @@ class EndGameScreen extends JFrame{
     private double readMoneyFile(){
         try{
             Scanner scan = new Scanner(new File("userGameInfo.txt"));
-            while (scanner.hasNextLine()){
+            while (scan.hasNextLine()){
                 String line = scan.nextLine();
                 if(line.startsWith("Money:")){
                     return Double.parseDouble(line.replace("Money: ", "").trim());
@@ -73,7 +74,7 @@ class EndGameScreen extends JFrame{
     }
 
     public static void main(String[] args){
-        new EndGameScreen("you made:", "You Lost :(");
+        new EndGameScreen();
 
     }
 

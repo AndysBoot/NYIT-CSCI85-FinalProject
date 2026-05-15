@@ -87,7 +87,7 @@ public class ExitGame extends JFrame {
         try {
             //basic file i/o, just writing money
             //write other information as well if possible please
-            writer = new FileWriter("userGameInfo.txt", true);
+            writer = new FileWriter("userGameInfo.txt", false);
             writer.write("Money: " + totalMoney);
             writer.close();
 
