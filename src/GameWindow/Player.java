@@ -1,12 +1,18 @@
+/* CSCI 185 M01
+Andy Sosa, (other contributors)
+5/14/2026
+*/
 package GameWindow;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Player extends JFrame{
-    public static int age = 18;
+    //public static int age = 18;
+    public static Player player;
     public static void main(String[] args) throws InterruptedException {
-        Player player = new Player();
+
+        player = new Player();
         player.setTitle("Game of Life");
         player.setLayout(new BorderLayout());
         player.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -23,5 +29,11 @@ public class Player extends JFrame{
         player.setVisible(true);
 
     }
+
+    public static void destroyWindow(){
+        player.dispose();
+    }
+
+
 
 }

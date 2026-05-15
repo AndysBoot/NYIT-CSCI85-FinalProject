@@ -1,4 +1,9 @@
+/* CSCI 185 M01
+Tayebi Pranta, Andy Sosa
+5/14/2026
+*/
 package GameWindow;
+import EndingPanel.ExitGame;
 import InvestmentsWindow.IRA;
 import InvestmentsWindow.investmentAccount;
 
@@ -21,6 +26,7 @@ public class Upgrades extends JPanel{
     private int minute = 0;
     private static JLabel moneyLabel;
     private JLabel ageLabel;
+    private Timer timer;
 
     // implementing Retirement panel with these instance fields
     private IRA retirement;
@@ -96,6 +102,7 @@ public class Upgrades extends JPanel{
 
         this.add(investBtn);
         createTimer();
+
     }
 
 
@@ -132,6 +139,7 @@ public class Upgrades extends JPanel{
     }
 
 
+
     // Call this method to create and start the timer
     public void createTimer() {
 
@@ -143,15 +151,25 @@ public class Upgrades extends JPanel{
 
         //Timer updates every one sec
         //From the java swing library
-        Timer timer = new Timer(1000, e -> {
+        this.timer = new Timer(1000, e -> {
             seconds++;
             //converting seconds to min : sec
             minute = seconds / 60;
             //String.format("%02d:%02d", minutes, seconds);
             timerLabel.setText(String.format("Time: %02d:%02d", minute, seconds % 60));
 
+            //once the player reaches 80, exit the game and stop the timer
+            if(age >= 80){
+                this.timer.stop();
+                new ExitGame();
+                Player.destroyWindow();
+
+            }
+
+
             //increments the age every 12 seconds
             if (this.seconds % 12 == 0) {
+
                 this.age++;
                 System.out.println(this.age);
                 ageLabel.setText("Age: " + this.age);

@@ -1,3 +1,7 @@
+/* CSCI 185 M01
+Andy Sosa
+5/14/2026
+*/
 package GameWindow;
 
 import javax.swing.*;
@@ -28,7 +32,7 @@ public class SelectEvent extends JPanel {
         randomEventHashmap.put(2, new RandomEvents("You found a $100 on the floor", 100, 1.0, 0));
         randomEventHashmap.put(3, new RandomEvents("You got a tax refund, enjoy your $1000", 1000, 1.0, 0));
         randomEventHashmap.put(4, new RandomEvents("You got a tax refund, enjoy your $1000", 1000, 1.0, 0));
-        randomEventHashmap.put(5, new RandomEvents("YOU WON THE LOTTERY!!!!!!!", 1000000, 1.0, 0));
+        randomEventHashmap.put(5, new RandomEvents("YOU WON THE LOTTERY!!!!!!!", 100000, 1.0, 0));
         randomEventHashmap.put(6, new RandomEvents("Birthday money from grandma, enjoy your $50", 50, 1.0, 0));
         randomEventHashmap.put(7, new RandomEvents("Birthday money from grandma, enjoy your $50", 50, 1.0, 0));
         randomEventHashmap.put(8, new RandomEvents("Birthday money from grandma, enjoy your $50", 50, 1.0, 0));

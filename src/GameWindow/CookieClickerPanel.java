@@ -1,3 +1,9 @@
+/* CSCI 185 M01
+Tayebi Pranta, Andy Sosa
+5/14/2026
+*/
+
+
 package GameWindow;
 import javax.swing.*;
 import java.awt.*;

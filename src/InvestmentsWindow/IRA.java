@@ -20,7 +20,7 @@ public class IRA extends investmentAccount {
     public void withdrawalPenalty(double amount) {
         // basic stuff, expand on later
         balance -= amount;
-        if(Player.age < 60) {
+        if(Upgrades.age < 60) {
             balance = balance * 0.9;
         }
     }
