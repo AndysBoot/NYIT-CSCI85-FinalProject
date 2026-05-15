@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class ExitGame extends JFrame {
-    private final int exitAge = 80;
+    private final int exitAge = 18;
     private JLabel gameinfo;
     private JLabel winInfo;
     private double totalMoney;

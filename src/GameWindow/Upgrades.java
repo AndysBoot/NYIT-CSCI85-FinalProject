@@ -15,7 +15,7 @@ import java.util.Objects;
 
 
 public class Upgrades extends JPanel{
-    public static int age = 18;
+    public static int age = 79;
     private JButton btn1;
     private JButton btn2;
     private JButton btn3;
