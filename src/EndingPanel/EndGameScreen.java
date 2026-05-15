@@ -4,6 +4,8 @@ import GameWindow.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.Scanner;
 
 class EndGameScreen extends JFrame{
     private final JLabel gameover;
@@ -12,17 +14,19 @@ class EndGameScreen extends JFrame{
     private final JLabel resultLabel;
 
 
-    public EndGameScreen(String moneyText, String resultText) {
+    public EndGameScreen() {
         super("Ending Screen");
         gameover = new JLabel("GAME OVER");
         gameover.setFont(new Font("StarJedi.ttf", Font.PLAIN, 43));
         gameover.setForeground(Color.RED);
         gameover.setHorizontalAlignment(JTextField.CENTER);
 
-        moneyLabel = new JLabel(moneyText);
+        double totalMoney = readMoneyFile();
+
+        moneyLabel = new JLabel("You made: " + totalMoney);
         moneyLabel.setFont(new Font("Arial", Font.BOLD, 15));
 
-        resultLabel = new JLabel(resultText);
+        resultLabel = new JLabel(totalMoney > 1000000? "You won!" : "You lost :D");
         resultLabel.setFont(new Font("Arial", Font.BOLD, 15));
 
         btn = new JButton("RESTART");
@@ -52,8 +56,25 @@ class EndGameScreen extends JFrame{
         setVisible(true);
     }
 
+    private double readMoneyFile(){
+        try{
+            Scanner scan = new Scanner(new File("userGameInfo.txt"));
+            while (scanner.hasNextLine()){
+                String line = scan.nextLine();
+                if(line.startsWith("Money:")){
+                    return Double.parseDouble(line.replace("Money: ", "").trim());
+                }
+            }
+            scan.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public static void main(String[] args){
-        new EndGameScreen("you made: $4", "You Lost :(");
+        new EndGameScreen("you made:", "You Lost :(");
+
     }
 
 

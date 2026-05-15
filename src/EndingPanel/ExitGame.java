@@ -60,10 +60,11 @@ public class ExitGame extends JFrame {
         this.add(winInfo);
 
         saveGame();
+        new EndGameScreen();
 
-        //this includes the EndGameScreen I make (Arnel)
+        //this includes the EndGameScreen
 
-        new EndGameScreen("You make: " + totalMoney, totalMoney>10000? "You Won!" : "You Lost");
+
 
       /*  //creates the new frame to display player info
         JFrame exitFrame = new JFrame();
