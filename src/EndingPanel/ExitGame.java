@@ -1,5 +1,5 @@
 /* CSCI 185 M01
-Andy Sosa,
+Andy Sosa, (whoever did the base code please put your name here),
 5/14/2026
 */
 
@@ -60,8 +60,13 @@ public class ExitGame extends JFrame {
         this.add(winInfo);
 
         saveGame();
+        new EndGameScreen();
 
-        //creates the new frame to display player info
+        //this includes the EndGameScreen
+
+
+
+      /*  //creates the new frame to display player info
         JFrame exitFrame = new JFrame();
         exitFrame.setSize(500, 500);
 
@@ -73,7 +78,7 @@ public class ExitGame extends JFrame {
         exitFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         exitFrame.setVisible(true);
-
+        */
         System.out.println("TESTING TOTAL MONEY" + this.totalMoney);
 
     }
@@ -82,7 +87,7 @@ public class ExitGame extends JFrame {
         try {
             //basic file i/o, just writing money
             //write other information as well if possible please
-            writer = new FileWriter("userGameInfo.txt", true);
+            writer = new FileWriter("userGameInfo.txt", false);
             writer.write("Money: " + totalMoney);
             writer.close();
 
