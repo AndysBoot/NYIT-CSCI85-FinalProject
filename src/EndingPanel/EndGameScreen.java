@@ -1,3 +1,8 @@
+/* CSCI 185 M01
+Arnel Jaen;Pharuns
+5/14/2026
+*/
+
 package EndingPanel;
 
 import GameWindow.*;
@@ -10,7 +15,6 @@ import java.util.Scanner;
 
 class EndGameScreen extends JFrame{
     private final JLabel gameover;
-    private final JButton btn;
     private final JLabel moneyLabel;
     private final JLabel resultLabel;
 
@@ -30,11 +34,6 @@ class EndGameScreen extends JFrame{
         resultLabel = new JLabel(totalMoney > 1000000? "You won!" : "You lost :D");
         resultLabel.setFont(new Font("Arial", Font.BOLD, 15));
 
-        btn = new JButton("RESTART");
-        btn.setSize(new Dimension(120, 35));
-        btn.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-
-
         //btn.addActionListener(e -> Start());
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -42,11 +41,7 @@ class EndGameScreen extends JFrame{
         //infoPanel.add(moneyLabel);
         //infoPanel.add(resultLabel);
 
-        JPanel btnPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        btnPanel.add(btn);
-
         mainPanel.add(gameover, BorderLayout.CENTER);
-        mainPanel.add(btnPanel, BorderLayout.SOUTH );
         mainPanel.add(moneyLabel, BorderLayout.WEST);
         mainPanel.add(resultLabel, BorderLayout.EAST);
 
@@ -65,6 +60,7 @@ class EndGameScreen extends JFrame{
                 if(line.startsWith("Money:")){
                     return Double.parseDouble(line.replace("Money: ", "").trim());
                 }
+
             }
             scan.close();
         }catch(IOException e){

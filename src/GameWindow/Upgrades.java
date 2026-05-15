@@ -1,5 +1,5 @@
 /* CSCI 185 M01
-Andy Sosa, Tayebi Pranta
+Tayebi Pranta, Andy Sosa
 5/14/2026
 */
 package GameWindow;

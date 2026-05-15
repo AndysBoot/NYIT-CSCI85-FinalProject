@@ -1,5 +1,5 @@
 /* CSCI 185 M01
-Andy Sosa, (whoever did the base code please put your name here),
+Arnel Jaen-Pharnus
 5/14/2026
 */
 
@@ -88,7 +88,7 @@ public class ExitGame extends JFrame {
             //basic file i/o, just writing money
             //write other information as well if possible please
             writer = new FileWriter("userGameInfo.txt", false);
-            writer.write("Money: " + totalMoney);
+            writer.write((int) totalMoney);
             writer.close();
 
         } catch (IOException e) {

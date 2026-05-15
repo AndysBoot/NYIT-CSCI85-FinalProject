@@ -20,7 +20,7 @@ public class CookieClickerPanel extends JPanel implements ActionListener {
 
     static int clickValue = 1;
     //Static variables because it applies to the whole class not just one instance of cookieClickerpANEL
-    private static int moneyCount = 0;
+    private static int moneyCount = 1;
 
     //Default Constructor
     public CookieClickerPanel() {
