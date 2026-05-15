@@ -61,7 +61,11 @@ public class ExitGame extends JFrame {
 
         saveGame();
 
-        //creates the new frame to display player info
+        //this includes the EndGameScreen I make (Arnel)
+
+        new EndGameScreen("You make: " + totalMoney, totalMoney>10000? "You Won!" : "You Lost");
+
+      /*  //creates the new frame to display player info
         JFrame exitFrame = new JFrame();
         exitFrame.setSize(500, 500);
 
@@ -73,7 +77,7 @@ public class ExitGame extends JFrame {
         exitFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         exitFrame.setVisible(true);
-
+        */
         System.out.println("TESTING TOTAL MONEY" + this.totalMoney);
 
     }
